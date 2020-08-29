@@ -26,6 +26,7 @@
 
 <script>
 import moment from 'moment';
+import keys from '../keys';
 
 const today = new Date();
 const formattedToday = moment(today).format('YYYY-MM-DD');
@@ -45,7 +46,7 @@ export default {
     async fetch(date) {
       this.$q.loading.show();
       try {
-        const { data } = await this.$axios.get(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=PxAInhOCTy1fUEKthYKmdR3US5hiU5ywROFXg0p4`);
+        const { data } = await this.$axios.get(`https://api.nasa.gov/planetary/apod?date=${date}&api_key=${keys.NASA_API_KEY}`);
         this.picture = data;
       } catch (e) {
         console.error(e);
